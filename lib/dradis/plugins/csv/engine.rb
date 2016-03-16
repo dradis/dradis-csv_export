@@ -4,7 +4,7 @@ module Dradis::Plugins::CSV
 
     include Dradis::Plugins::Base
     provides :export
-    description 'Export results in comma-separated values'
+    description 'Export results in CSV format'
 
 
     initializer "dradis-csv.inflections" do |app|
