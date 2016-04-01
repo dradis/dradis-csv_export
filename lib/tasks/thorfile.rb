@@ -1,5 +1,5 @@
 class CSVTasks < Thor
-  include Core::Pro::ProjectScopedTask if defined?(::Core::Pro)
+  include Dradis::Plugins::thor_helper_module.to_s.constantize
 
   namespace "dradis:plugins:csv"
 
@@ -11,19 +11,13 @@ class CSVTasks < Thor
     logger.level = Logger::DEBUG
     content_service = nil
 
-
-    if defined?(Dradis::Pro)
-      detect_and_set_project_scope
-      content_service = 'Dradis::Pro::Plugins::ContentService'
-    else
-      content_service = 'Dradis::Plugins::ContentService'
-    end
-
-    csv = Dradis::Plugins::CSV::Exporter.new.export({
-      content_service: content_service
+    detect_and_set_project_scope
+    exporter = Dradis::Plugins::CSV::Exporter.new({
+      content_service: Dradis::Plugins::ContentService.new(plugin: Dradis::Plugins::CSV)
     })
+    csv = exporter.export()
 
-    filename = "dradis_report-#{Time.now.to_i}.csv"
+    filename = "dradis-report_#{Time.now.to_i}.csv"
     File.open(filename, 'w') { |f| f.write csv }
 
     logger.info "File written to ./#{ filename }"
