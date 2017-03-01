@@ -4,10 +4,8 @@ module Dradis
       class BaseController < Dradis::Plugins::Export::BaseController
 
         def index
-          # these come from Export#create
-          export_manager_hash = session[:export_manager].with_indifferent_access
-          exporter            = Dradis::Plugins::CSV::Exporter.new
-          csv                 = exporter.export(export_manager_hash)
+          exporter = Dradis::Plugins::CSV::Exporter.new(export_options)
+          csv      = exporter.export
 
           send_data csv,
             disposition: 'inline',
