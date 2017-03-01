@@ -1,5 +1,5 @@
 class CSVTasks < Thor
-  include Dradis::Plugins::thor_helper_module.to_s.constantize
+  include Rails.application.config.dradis.thor_helper_module
 
   namespace "dradis:plugins:csv"
 
@@ -9,12 +9,10 @@ class CSVTasks < Thor
 
     logger = Logger.new(STDOUT)
     logger.level = Logger::DEBUG
-    content_service = nil
 
     detect_and_set_project_scope
-    exporter = Dradis::Plugins::CSV::Exporter.new({
-      content_service: Dradis::Plugins::ContentService.new(plugin: Dradis::Plugins::CSV)
-    })
+
+    exporter = Dradis::Plugins::CSV::Exporter.new
     csv = exporter.export()
 
     filename = "dradis-report_#{Time.now.to_i}.csv"
