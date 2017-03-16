@@ -1,8 +1,6 @@
 module Dradis::Plugins::CSV
   class Exporter < Dradis::Plugins::Export::Base
     def export(args={})
-      template        = args[:template]
-
       issues = content_service.all_issues
 
       if issues.empty?
