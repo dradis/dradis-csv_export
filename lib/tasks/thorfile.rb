@@ -7,9 +7,6 @@ class CSVTasks < Thor
   def export
     require 'config/environment'
 
-    logger = Logger.new(STDOUT)
-    logger.level = Logger::DEBUG
-
     detect_and_set_project_scope
 
     exporter = Dradis::Plugins::CSV::Exporter.new
@@ -19,8 +16,6 @@ class CSVTasks < Thor
     File.open(filename, 'w') { |f| f.write csv }
 
     logger.info "File written to ./#{ filename }"
-
-    logger.close
   end
 
 end
