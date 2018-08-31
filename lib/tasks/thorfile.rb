@@ -9,7 +9,7 @@ class CSVTasks < Thor
 
     detect_and_set_project_scope
 
-    exporter = Dradis::Plugins::CSV::Exporter.new
+    exporter = Dradis::Plugins::CSV::Exporter.new(task_options)
     csv = exporter.export()
 
     filename = "dradis-report_#{Time.now.to_i}.csv"
