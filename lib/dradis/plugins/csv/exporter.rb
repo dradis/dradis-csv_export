@@ -1,7 +1,7 @@
 module Dradis::Plugins::CSV
   class Exporter < Dradis::Plugins::Export::Base
     def export(args={})
-      issues = content_service.all_issues
+      issues = content_service.all_issues.published
 
       if issues.empty?
         return "The project didn't contain any issues"
