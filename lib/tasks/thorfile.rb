@@ -12,7 +12,14 @@ class CSVTasks < Thor
     exporter = Dradis::Plugins::CSV::Exporter.new(task_options)
     csv = exporter.export()
 
-    filename = "dradis-report_#{Time.now.to_i}.csv"
+    date = DateTime.now.strftime("%Y-%m-%d")
+    base_filename = "dradis-report_#{date}.csv"
+
+    filename = NamingService.name_file(
+      original_filename: base_filename,
+      pathname: Rails.root
+    )
+
     File.open(filename, 'w') { |f| f.write csv }
 
     logger.info "File written to ./#{ filename }"
