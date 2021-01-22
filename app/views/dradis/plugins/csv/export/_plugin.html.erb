@@ -1,9 +1,7 @@
-<% plugin_name = Dradis::Plugins::CSV::Engine.plugin_name %>
-
-<%= content_tag :div, id: "plugin-#{plugin_name}", class: 'tab-pane fade' do %>
+<%= content_tag :div, id: 'plugin-csv', class: 'tab-pane fade' do %>
 
   <%= form_tag project_export_manager_path(current_project), target: '_blank' do %>
-    <%= hidden_field_tag :plugin, plugin_name %>
+    <%= hidden_field_tag :plugin, :csv %>
     <%= hidden_field_tag :route, :root %>
 
     <h4 class="header-underline mb-0">Ready when you are!</h4>
