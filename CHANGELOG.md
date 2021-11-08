@@ -8,8 +8,8 @@ v3.21.0 (February 2021)
   - No changes
 
 v3.20.0 (December 2020)
-  - Add views for the export view.
-  - Use NamingService to build export filename.
+  - Add views for the export view
+  - Use NamingService to build export filename
 
 v3.19.0 (September 2020)
   - No changes
