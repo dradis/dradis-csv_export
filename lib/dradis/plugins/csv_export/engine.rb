@@ -1,6 +1,6 @@
-module Dradis::Plugins::CSV
+module Dradis::Plugins::CSVExport
   class Engine < ::Rails::Engine
-    isolate_namespace Dradis::Plugins::CSV
+    isolate_namespace Dradis::Plugins::CSVExport
 
     include Dradis::Plugins::Base
     provides :export
@@ -15,7 +15,7 @@ module Dradis::Plugins::CSV
 
     initializer 'dradis-csv.mount_engine' do
       Rails.application.routes.append do
-        mount Dradis::Plugins::CSV::Engine => '/export/csv'
+        mount Dradis::Plugins::CSVExport::Engine => '/export/csv'
       end
     end
 
