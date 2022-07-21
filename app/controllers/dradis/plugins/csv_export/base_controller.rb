@@ -1,10 +1,10 @@
 module Dradis
   module Plugins
-    module CSV
+    module CSVExport
       class BaseController < Dradis::Plugins::Export::BaseController
 
         def index
-          exporter = Dradis::Plugins::CSV::Exporter.new(export_options)
+          exporter = Dradis::Plugins::CSVExport::Exporter.new(export_options)
           csv      = exporter.export
 
           send_data csv,

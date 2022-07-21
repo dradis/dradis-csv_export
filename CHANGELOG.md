@@ -1,3 +1,6 @@
+v4.5.0 (XXX 2022)
+  - Rename integration to dradis-csv_export
+
 v4.4.0 (June 2022)
   - No changes
 

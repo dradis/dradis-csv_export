@@ -1,21 +1,21 @@
-module Dradis::Plugins::CSV
+module Dradis::Plugins::CSVExport
   class Engine < ::Rails::Engine
-    isolate_namespace Dradis::Plugins::CSV
+    isolate_namespace Dradis::Plugins::CSVExport
 
     include Dradis::Plugins::Base
     provides :export
     description 'Export results in CSV format'
 
 
-    initializer "dradis-csv.inflections" do |app|
+    initializer "dradis-csv_export.inflections" do |app|
       ActiveSupport::Inflector.inflections do |inflect|
         inflect.acronym('CSV')
       end
     end
 
-    initializer 'dradis-csv.mount_engine' do
+    initializer 'dradis-csv_export.mount_engine' do
       Rails.application.routes.append do
-        mount Dradis::Plugins::CSV::Engine => '/export/csv'
+        mount Dradis::Plugins::CSVExport::Engine => '/export/csv'
       end
     end
 
