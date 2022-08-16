@@ -1,5 +1,5 @@
 v4.5.0 (August 2022)
-  - No changes
+  - Rename addon to dradis-csv_export
 
 v4.4.0 (June 2022)
   - No changes
