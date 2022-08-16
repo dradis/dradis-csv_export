@@ -1,4 +1,4 @@
-module Dradis::Plugins::CSV
+module Dradis::Plugins::CSVExport
   class Exporter < Dradis::Plugins::Export::Base
     def export(args={})
       issues = content_service.all_issues

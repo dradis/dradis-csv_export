@@ -1,6 +1,6 @@
 # CSV plugin for Dradis
 
-[![Build Status](https://secure.travis-ci.org/dradis/dradis-csv.png?branch=master)](http://travis-ci.org/dradis/dradis-csv)
+[![Build Status](https://secure.travis-ci.org/dradis/dradis-csv_export.png?branch=master)](http://travis-ci.org/dradis/dradis-csv_export)
 
 Export Dradis findings into Comma Separated Value (CSV) format.
 
@@ -11,7 +11,7 @@ The plugin requires [Dradis Community Edition](http://dradisframework.org) 3.0 o
 
 Add the CSV plugin to your `Gemfile.plugins`:
 
-    gem 'dradis-csv'
+    gem 'dradis-csv_export'
 
 And
 

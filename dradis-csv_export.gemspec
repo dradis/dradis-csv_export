@@ -1,12 +1,12 @@
 $:.push File.expand_path('../lib', __FILE__)
-require 'dradis/plugins/csv/version'
-version = Dradis::Plugins::CSV::VERSION::STRING
+require 'dradis/plugins/csv_export/version'
+version = Dradis::Plugins::CSVExport::VERSION::STRING
 
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
-  spec.platform      = Gem::Platform::RUBY
-  spec.name = 'dradis-csv'
+  spec.platform = Gem::Platform::RUBY
+  spec.name = 'dradis-csv_export'
   spec.version = version
   spec.summary = 'CSV export plugin for the Dradis Framework.'
   spec.description = 'This plugin allows you to export your Dradis results in CSV format.'

@@ -9,7 +9,7 @@ class CSVTasks < Thor
 
     detect_and_set_project_scope
 
-    exporter = Dradis::Plugins::CSV::Exporter.new(task_options)
+    exporter = Dradis::Plugins::CSVExport::Exporter.new(task_options)
     csv = exporter.export()
 
     date = DateTime.now.strftime("%Y-%m-%d")

@@ -6,4 +6,4 @@ require 'dradis-plugins'
 require 'csv'
 
 # Load this add-on's engine
-require 'dradis/plugins/csv'
+require 'dradis/plugins/csv_export'
