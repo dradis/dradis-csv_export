@@ -6,6 +6,8 @@
 
     <h4 class="header-underline mb-0">Ready when you are!</h4>
 
-    <%= render partial: 'export/submit_button', locals: { plugin_name: Dradis::Plugins::CSVExport::Engine.plugin_name } %>
+    <div class="mt-4">
+      <%= render partial: 'export/submit_button', locals: { plugin_name: Dradis::Plugins::CSVExport::Engine.plugin_name } %>
+    </div>
   <% end %>
 <% end%>
