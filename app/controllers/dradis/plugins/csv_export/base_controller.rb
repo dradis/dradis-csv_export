@@ -3,9 +3,7 @@ module Dradis
     module CSVExport
       class BaseController < Dradis::Plugins::Export::BaseController
         def index
-          exporter = Dradis::Plugins::CSVExport::Exporter.new(
-            export_options.merge(scope: @scope.to_sym)
-          )
+          exporter = Dradis::Plugins::CSVExport::Exporter.new(export_params)
           csv = exporter.export
 
           send_data csv,
