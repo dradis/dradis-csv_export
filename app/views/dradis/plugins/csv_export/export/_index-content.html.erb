@@ -1,11 +1,6 @@
 <%= content_tag :div, id: 'plugin-csv_export', class: 'tab-pane fade' do %>
-
-  <%= form_tag project_export_manager_path(current_project), target: '_blank' do %>
-    <%= hidden_field_tag :plugin, :csv_export %>
-    <%= hidden_field_tag :route, :root %>
-
+  <%= form_tag csv_export.project_export_path(current_project) do %>
     <h4 class="header-underline mb-0">Ready when you are!</h4>
-
     <div class="mt-4">
       <%= render partial: 'export/submit_button', locals: { plugin_name: Dradis::Plugins::CSVExport::Engine.plugin_name } %>
     </div>
