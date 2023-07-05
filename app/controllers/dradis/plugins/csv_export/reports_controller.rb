@@ -1,7 +1,7 @@
 module Dradis
   module Plugins
     module CSVExport
-      class ExportsController < Dradis::Plugins::Export::BaseController
+      class ReportsController < Dradis::Plugins::Export::BaseController
         skip_before_action :validate_template
 
         def create
