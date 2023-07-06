@@ -14,7 +14,7 @@ module Dradis::Plugins::CSVExport
 
     initializer 'dradis-csv_export.mount_engine' do
       Rails.application.routes.append do
-        mount Dradis::Plugins::CSVExport::Engine => '/export/csv', as: :csv_export
+        mount Dradis::Plugins::CSVExport::Engine => '/', as: :csv_export
       end
     end
   end
