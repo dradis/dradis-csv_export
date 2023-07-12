@@ -1,3 +1,5 @@
 Dradis::Plugins::CSVExport::Engine.routes.draw do
-  root to: 'base#index'
+  resources :projects, only: [] do
+    resource :report, only: [:create], path: '/export/csv/reports'
+  end
 end

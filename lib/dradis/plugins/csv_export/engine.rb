@@ -6,8 +6,7 @@ module Dradis::Plugins::CSVExport
     provides :export
     description 'Export results in CSV format'
 
-
-    initializer "dradis-csv_export.inflections" do |app|
+    initializer 'dradis-csv_export.inflections' do |app|
       ActiveSupport::Inflector.inflections do |inflect|
         inflect.acronym('CSV')
       end
@@ -15,9 +14,8 @@ module Dradis::Plugins::CSVExport
 
     initializer 'dradis-csv_export.mount_engine' do
       Rails.application.routes.append do
-        mount Dradis::Plugins::CSVExport::Engine => '/export/csv'
+        mount Dradis::Plugins::CSVExport::Engine => '/', as: :csv_export
       end
     end
-
   end
 end

@@ -1,8 +1,10 @@
 module Dradis
   module Plugins
     module CSVExport
-      class BaseController < Dradis::Plugins::Export::BaseController
-        def index
+      class ReportsController < Dradis::Plugins::Export::BaseController
+        skip_before_action :validate_template
+
+        def create
           exporter = Dradis::Plugins::CSVExport::Exporter.new(export_params)
           csv = exporter.export
 
