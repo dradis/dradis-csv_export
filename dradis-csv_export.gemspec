@@ -2,7 +2,6 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'dradis/plugins/csv_export/version'
 version = Dradis::Plugins::CSVExport::VERSION::STRING
 
-
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
@@ -14,11 +13,10 @@ Gem::Specification.new do |spec|
   spec.license = 'GPL-2'
 
   spec.authors = ['Daniel Martin']
-  spec.email = ['etd@nomejortu.com']
-  spec.homepage = 'http://dradisframework.org'
+  spec.homepage = 'http://dradis.com'
 
   spec.files = `git ls-files`.split($\)
-  spec.executables = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  spec.executables = spec.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   spec.test_files = spec.files.grep(%r{^(test|spec|features)/})
 
   # By not including Rails as a dependency, we can use the gem with different

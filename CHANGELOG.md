@@ -1,7 +1,8 @@
-v4.10.0 (Month 2023)
-  - Implement handling of HTML exports directly from Tylium
+v4.10.0 (September 2023)
+  - Implement handling of exports directly from Tylium
   - Update views for compatibility with Font Awesome 6
-  
+  - Update gemspec links
+
 v4.9.0 (June 2023)
   - Update views for compatibility with Bootstrap 5
 
