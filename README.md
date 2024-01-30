@@ -7,7 +7,7 @@ Export Dradis findings into Comma Separated Value (CSV) format.
 
 ## Installation
 
-The plugin requires [Dradis Community Edition](http://dradisframework.org) 3.0 or [Dradis Professional Edition](http://securityroots.com/dradispro/) 1.11 or higher.
+The add-on requires [Dradis CE](https://dradis.com/ce/) > 3.0, or [Dradis Pro](https://dradis.com/).
 
 Add the CSV plugin to your `Gemfile.plugins`:
 
