@@ -17,7 +17,7 @@ class CSVTasks < Thor
 
     filename = NamingService.name_file(
       original_filename: base_filename,
-      pathname: Rails.root
+      pathname: Rails.root.join('tmp')
     )
 
     File.open(filename, 'w') { |f| f.write csv }
