@@ -1,5 +1,5 @@
 v5.0.0 (March 2026)
-  - Write file to temporary folder when exported via the command line
+  - Accept file path argument when exporting via the command line
 
 v4.19.0 (November 2025)
   - No changes
