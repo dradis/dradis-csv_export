@@ -9,14 +9,12 @@ module Dradis::Plugins::CSVExport
         # All fields from all Issues in the project
         issue_keys    = issues.map(&:fields).map(&:keys).flatten.uniq
 
+        evidence_by_issue = content_service.all_evidence.where(issue_id: issues.map(&:id)).group_by(&:issue_id)
+
         # All fields from all Evidence in the project
         evidence_keys = issues.map do |issue|
-          issue_evidence = content_service.evidence_for(issue)
-          if issue_evidence.any?
-            issue_evidence.map(&:fields).map(&:keys).flatten.uniq
-          else
-            []
-          end
+          issue_evidence = evidence_by_issue.fetch(issue.id, [])
+          issue_evidence.map(&:fields).map(&:keys).flatten.uniq
         end.flatten.uniq
 
         keys = issue_keys + evidence_keys
@@ -38,7 +36,7 @@ module Dradis::Plugins::CSVExport
               issue.fields.fetch(key, 'n/a')
             end
 
-            issue_evidence = content_service.evidence_for(issue)
+            issue_evidence = evidence_by_issue.fetch(issue.id, [])
 
             # If we've got multiple Evidence, we add one row per Evidence
             if issue_evidence.any?
