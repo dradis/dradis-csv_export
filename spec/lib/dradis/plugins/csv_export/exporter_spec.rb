@@ -15,22 +15,29 @@ describe Dradis::Plugins::CSVExport::Exporter do
     end
   end
 
-  context 'evidence scope' do
+  context 'scope' do
     let(:node) { create(:node, project: project) }
-    let!(:issue) { create(:issue, node: project.issue_library, state: :published) }
+    let!(:published_issue) do
+      create(:issue, node: project.issue_library, state: :published, text: "#[Title]#\nPublished issue\n")
+    end
+    let!(:draft_issue) do
+      create(:issue, node: project.issue_library, state: :draft, text: "#[Title]#\nDraft issue\n")
+    end
     let!(:published_evidence) do
-      create(:evidence, issue: issue, node: node, state: :published, content: "#[EvidenceField]#\nPublished evidence\n")
+      create(:evidence, issue: published_issue, node: node, state: :published, content: "#[EvidenceField]#\nPublished evidence\n")
     end
     let!(:draft_evidence) do
-      create(:evidence, issue: issue, node: node, state: :draft, content: "#[EvidenceField]#\nDraft evidence\n")
+      create(:evidence, issue: published_issue, node: node, state: :draft, content: "#[EvidenceField]#\nDraft evidence\n")
     end
 
     context 'published scope' do
       let(:scope) { :published }
 
-      it 'only includes published evidence' do
+      it 'only includes published issues and evidence' do
         csv = exporter.export
 
+        expect(csv).to include('Published issue')
+        expect(csv).not_to include('Draft issue')
         expect(csv).to include('Published evidence')
         expect(csv).not_to include('Draft evidence')
       end
@@ -39,9 +46,11 @@ describe Dradis::Plugins::CSVExport::Exporter do
     context 'all scope' do
       let(:scope) { :all }
 
-      it 'includes evidence regardless of state' do
+      it 'includes issues and evidence regardless of state' do
         csv = exporter.export
 
+        expect(csv).to include('Published issue')
+        expect(csv).to include('Draft issue')
         expect(csv).to include('Published evidence')
         expect(csv).to include('Draft evidence')
       end
