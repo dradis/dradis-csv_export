@@ -29,6 +29,9 @@ describe Dradis::Plugins::CSVExport::Exporter do
     let!(:draft_evidence) do
       create(:evidence, issue: published_issue, node: node, state: :draft, content: "#[EvidenceField]#\nDraft evidence\n")
     end
+    let!(:published_evidence_on_draft_issue) do
+      create(:evidence, issue: draft_issue, node: node, state: :published, content: "#[EvidenceField]#\nEvidence on draft issue\n")
+    end
 
     context 'published scope' do
       let(:scope) { :published }
@@ -40,6 +43,13 @@ describe Dradis::Plugins::CSVExport::Exporter do
         expect(csv).not_to include('Draft issue')
         expect(csv).to include('Published evidence')
         expect(csv).not_to include('Draft evidence')
+      end
+
+      it 'excludes published evidence belonging to a non-published issue' do
+        csv = exporter.export
+
+        expect(csv).not_to include('Draft issue')
+        expect(csv).not_to include('Evidence on draft issue')
       end
     end
 
@@ -53,6 +63,7 @@ describe Dradis::Plugins::CSVExport::Exporter do
         expect(csv).to include('Draft issue')
         expect(csv).to include('Published evidence')
         expect(csv).to include('Draft evidence')
+        expect(csv).to include('Evidence on draft issue')
       end
     end
   end
