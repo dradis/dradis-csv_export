@@ -7,7 +7,7 @@ module Dradis::Plugins::CSVExport
         return "The project didn't contain any issues"
       else
         # All fields from all Issues in the project
-        issue_keys    = issues.map(&:fields).map(&:keys).flatten.uniq
+        issue_keys = issues.map(&:fields).map(&:keys).flatten.uniq
 
         evidence_by_issue = content_service.all_evidence.where(issue_id: issues.map(&:id)).group_by(&:issue_id)
 
@@ -19,7 +19,7 @@ module Dradis::Plugins::CSVExport
 
         keys = issue_keys + evidence_keys
 
-        issue_row    = []
+        issue_row = []
         evidence_row = []
 
         # Create the CSV data
