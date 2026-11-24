@@ -9,7 +9,7 @@ module Dradis
           csv = exporter.export
           filename = "dradis_report-#{Time.now.to_i}.csv"
 
-          track_download(filename: filename, size: csv.bytesize) if defined?(Dradis::Pro)
+          track_download(filename: filename, size: csv.bytesize, type: 'report') if defined?(Dradis::Pro)
 
           send_data csv,
             disposition: 'inline',
